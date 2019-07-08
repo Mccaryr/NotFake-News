@@ -1,0 +1,1 @@
+Post.create! title: "Fake Moonlanding?" info: "Nah, it happened."

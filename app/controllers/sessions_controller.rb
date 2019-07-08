@@ -12,8 +12,14 @@
 #         else 
 #             redirect_to signin_path 
 #         end 
+#         end
+
+#       def destroy
+#         session.delete :user_id 
+#         redirect_to root_path 
+#       end 
 
         # def user_params 
-        #     params.require(:user).permit(:name,:password, :uid, :email, :name)
+        #     params.require(:user).permit(:name,:password, :uid, :username)
         # end 
 #     end

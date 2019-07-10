@@ -1,1 +1,1 @@
-Post.create! id: 1, title: "Fake Moonlanding?", info: "Nah, it happened."
+Post.create! title: "Fake Moonlanding?", info: "Nah, it happened."

@@ -1,4 +1,4 @@
 <h1>Real NotFake News</h1>
 <% @posts.each do |post| %>
-<a href = "<%= post.title %>"> 
+<h2><%= link_to post.title, post %></h2>
 <%end%>

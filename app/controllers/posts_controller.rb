@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     end 
 
     def show
-        @post = Post.find(post_params) 
+        @post = Post.find(params[:id]) 
     end 
 
     def post_params 

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationRecord 
+class CommentsController < ApplicationController
 
     def new 
         @comment = Comment.new 
@@ -9,3 +9,4 @@ class CommentsController < ApplicationRecord
         @comment.destroy
         redirect_to posts_path
     end 
+end 

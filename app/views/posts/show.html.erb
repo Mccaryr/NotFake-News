@@ -1,1 +1,15 @@
-<%= @post.info %>
+<h2><%= @post.title %></h2>
+<br><p><%= @post.info %></p>
+
+<%= link_to "New Comment", post_path(@post) %>
+
+<h3>Comments</h3>
+<% @post.comments.each do |comment| %>
+<br>
+<p> <%= comment.content %> </p>
+
+<% end %>
+
+<%= link_to "Load Comments", post_comments_path(@post), class: "load_comments" %>
+<br>
+<div id="comments-json-area">ajax json comments here: </div>

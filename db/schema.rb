@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_07_11_204817) do
 
   create_table "comments", force: :cascade do |t|
-    t.text "description"
+    t.text "content"
     t.integer "post_id"
   end
 

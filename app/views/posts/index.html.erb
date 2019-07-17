@@ -1,4 +1,6 @@
 <h1>Real NotFake News</h1>
 <% @posts.each do |post| %>
-<h2><%= link_to post.title, post %></h2>
+<h2><%= link_to post.title, post_path(post) %></h2>
+
+
 <%end%>

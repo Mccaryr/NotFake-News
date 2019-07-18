@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
-    before_action :current_user, only: [:show]
-    before_action :require_login, only: [:show]
+    # before_action :current_user, only: [:show]
+    # before_action :require_login, only: [:show]
     
     
     def new 
@@ -24,6 +24,6 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password, :comment_id)
     end 
 end 

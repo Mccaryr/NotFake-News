@@ -2,25 +2,10 @@ class CommentsController < ApplicationController
     before_action :set_post 
 
     def index
-        # @comments = @post.comments 
-        # render 'comments/index', :layout => false 
-         
-		if params[:post_id]
-			@post = Post.find(params[:post_id])
-			@comments = Comment.all.where(post_id: params[:post_id])
-
-			respond_to do |format|
-				format.html {render partial: 'comments/post_comments', locals: { comments: @comments, post: @post}}
-                format.json {render json: @comments}
-            end
-        
-		else
-			@comments = Comment.all
-			respond_to do |f|
-				f.html {render :index} 
-				f.json {render json: @comments}
-			end
-		end
+        @comments = @post.comments 
+        render 'comments/index', :layout => false 
+         binding.pry 
+		
     end
     
     def show
@@ -33,9 +18,33 @@ class CommentsController < ApplicationController
 
     def create
         @post = Post.find(params[:post_id])
-            @comment = @post.comments.create(comment_params)
-            redirect_to post_path(@post)
-    end  
+        @comment = @post.comments.build(comment_params)
+        if @comment.save
+            redirect_to post_comments_path
+        else
+            puts "Not Saving"
+            
+        end
+        # @post = Post.find(params[:post_id])
+        # @comment = @post.comments.build(comment_params)
+        # puts comment_params 
+        # if @comment.save 
+        #     render 'comments/show', layout: false 
+        # else 
+        #     render "posts/show"
+		# # if @comment.update(comment_params)
+		# # 	respond_to do |format|
+		# # 		format.html {redirect_to post_path(@post)}
+		# # 		format.json {render json: @comment}
+		# # 	end
+		# # else
+		# # 	flash.now[:message] = @comment.errors[:content][0]
+		# # 	render :new
+        # # end
+        # # redirect_to posts_path 
+        # end 
+	end
+      
 
 
     def destroy 
@@ -45,10 +54,16 @@ class CommentsController < ApplicationController
         redirect_to post_path(@post)
     end 
 
+    def new 
+        @post = Post.find(params[:post_id])
+        @comment = @post.comments.build 
+       
+    end 
+
 private 
 
     def comment_params 
-        params.require(:comment).permit(:content, :post_id)
+        params.require(:comment).permit(:post_id, :content, :user_id)
     end 
 
     def set_post 

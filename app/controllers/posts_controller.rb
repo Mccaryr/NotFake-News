@@ -15,22 +15,24 @@ class PostsController < ApplicationController
 
     def create 
         @post = Post.create(post_params)
-        if @post.save 
-            respond_to do |f| 
-                f.html {redirect_to posts_path}
-                f.json {redner json: @posts}
-            end 
-        else 
-            redirect_to posts_path 
-        end 
+        # if @post.save 
+        #     respond_to do |f| 
+        #         f.html {redirect_to posts_path}
+        #         f.json {redner json: @posts}
+        #     end 
+        # else 
+        #     redirect_to posts_path 
+        # end 
     end 
 
     def show
         @post = Post.find(params[:id])  
-        respond_to do |f| 
-            f.html {render :show}
-            f.json {render json: @post}  
-        end 
+        # respond_to do |f| 
+        #     f.html {render :show}
+        #     f.json {render json: @post}  
+        # end 
+        # @comments = @post.comments 
+        # @comment = @post.comments.build 
     end 
 
     def new_comment_form 
@@ -38,6 +40,6 @@ class PostsController < ApplicationController
     end 
 
     def post_params 
-        params.require(:post).permit(:title, :info)
+        params.require(:post).permit(:title, :info, :comment_id)
     end 
 end 

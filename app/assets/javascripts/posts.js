@@ -1,15 +1,24 @@
-$(function(){
-    $("a.load_comments").on("click", function(e){
-        $.ajax({
-            url: this.href,
-            method: 'GET',
-            dataType: 'json'
-        }).done(function(data) {
-            console.log(data)
-    })
-    e.preventDefault();
-})
-})
+$(document).ready(function() {
+console.log("yay!")
+
+
+
+
+
+// $(function(){
+//     $("a.load_comments").on("click", function(e){
+//        $.get(this.href).success(function(response){
+//            $("div.comments").html(response)
+//        })
+//     e.preventDefault();
+// })
+// })
+
+    // $(function(){
+    //     $("#new_comment").on("submit", function(e){
+    //         e.preventDefault();
+    //     })
+    // })
 
 // function listenForClick(){
 //     $('button#posts-data').on('click', function(event) {
@@ -58,3 +67,5 @@ $(function(){
 //         </div> 
 //         `)
 // }
+
+})

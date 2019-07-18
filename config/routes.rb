@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         resources :comments 
     end 
 
-    get '/new_comment_form', to: 'posts#new_comment_form'
+    # get '/new_comment_form', to: 'posts#new_comment_form'
     get '/signin', to: 'sessions#new'
     post '/signin', to: 'sessions#create'
     post '/logout', to: 'sessions#destroy'

@@ -5,4 +5,6 @@
 <%= @comment.post.info %>
 <hr>
 <p>Comment:</p>
-<%= @comment.content %>
+<%= @comment.content %>     
+<%= link_to "Edit Comment", edit_post_comment_path(@post, @comment) %>
+<%= link_to "Delete Comment", post_comment_path(@comment), method: :delete %>

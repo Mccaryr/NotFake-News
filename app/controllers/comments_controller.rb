@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     def index
         @comments = @post.comments 
         render 'comments/index', :layout => false 
-         binding.pry 
+         
 		
     end
     
@@ -59,6 +59,28 @@ class CommentsController < ApplicationController
         @comment = @post.comments.build 
        
     end 
+
+    def edit 
+        @post = Post.find(params[:id])
+        @comment = @post.comments.find(params[:id])
+ 
+        # if @comment.update(comment_params)
+        #     redirect_to 'welcome#home'
+        # else 
+        #     render :edit 
+        # end 
+    end  
+
+    def update 
+        @post = Post.find(params[:id])
+        @comment = Comment.find(params[:id])
+ 
+        if @comment.update(comment_params)
+            redirect_to 'welcome#home'
+        else 
+            render :edit 
+        end 
+    end  
 
 private 
 

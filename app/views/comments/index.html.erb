@@ -1,11 +1,11 @@
-<h1>All Comments</h1>
+<%# <h1>All Comments</h1> %>
 
 <% @comments.each do |comment| %>
 	
 	<br>
-	<br><ol>
-	<li>comment: <%= comment.content%></li>
-    </ol>
+	<br><ul>
+	<li>   <%= comment.content%></li> 
+    </ul>
 	<br>
 	<hr>
 <% end %>

@@ -3,13 +3,15 @@ class CommentsController < ApplicationController
 
     def index
         @comments = @post.comments 
+       
         render 'comments/index', :layout => false 
          
 		
     end
     
     def show
-		@comment = Comment.find(params[:id])
+        @comment = Comment.find(params[:id])
+        
 		respond_to do |f|
 			f.html {render :show} 
 			f.json {render json: @comment}
@@ -64,11 +66,7 @@ class CommentsController < ApplicationController
         @post = Post.find(params[:post_id])
         @comment = @post.comments.find(params[:id])
  
-        # if @comment.update(comment_params)
-        #     redirect_to 'welcome#home'
-        # else 
-        #     render :edit 
-        # end 
+    
     end  
 
     def update 

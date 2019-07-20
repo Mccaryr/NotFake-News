@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         # if @post.save 
         #     respond_to do |f| 
         #         f.html {redirect_to posts_path}
-        #         f.json {redner json: @posts}
+        #         f.json {render json: @post}
         #     end 
         # else 
         #     redirect_to posts_path 

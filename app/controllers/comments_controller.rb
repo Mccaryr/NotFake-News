@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
     end 
 
     def edit 
-        @post = Post.find(params[:id])
+        @post = Post.find(params[:post_id])
         @comment = @post.comments.find(params[:id])
  
         # if @comment.update(comment_params)
@@ -72,11 +72,11 @@ class CommentsController < ApplicationController
     end  
 
     def update 
-        @post = Post.find(params[:id])
-        @comment = Comment.find(params[:id])
+        @post = Post.find(params[:post_id])
+        @comment = @post.comments.find(params[:id])
  
         if @comment.update(comment_params)
-            redirect_to 'welcome#home'
+            redirect_to posts_path 
         else 
             render :edit 
         end 

@@ -5,11 +5,11 @@
 
 <h3>Comments</h3>
 <div class ="comments">
-<% @post.comments.each do |comment| %>
+<%# <% @post.comments.each do |comment| %>
 
-<p> <%= comment.content %> </p></div>
+<%# <p> <%= comment.content %> </p></div> 
 
-<% end %>
+<%# <% end %> 
 
 <%= link_to "Load Comments", post_comments_path(@post), class: "load_comments" %>
 <div class="comments"></div>

@@ -1,6 +1,7 @@
 <h1>Real NotFake News</h1>
 <% @posts.each do |post| %>
 <h2><%= link_to post.title, post_path(post) %></h2>
-
-
+<%= link_to "Show Info", post_path(post), class: "show_info" %> <div class="info">
+                
+    
 <%end%>

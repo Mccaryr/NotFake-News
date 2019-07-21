@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
     def index 
         @posts = Post.all
+        
         respond_to do |f| 
             f.html {render :index}
             f.json {render json: @posts}  
@@ -27,10 +28,10 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])  
-        # respond_to do |f| 
-        #     f.html {render :show}
-        #     f.json {render json: @post}  
-        # end 
+        respond_to do |f| 
+            f.html {render :show}
+            f.json {render json: @post}  
+        end 
         # @comments = @post.comments 
         # @comment = @post.comments.build 
     end 
@@ -40,6 +41,6 @@ class PostsController < ApplicationController
     end 
 
     def post_params 
-        params.require(:post).permit(:title, :info, :comment_id)
+        params.require(:post).permit(:title, :info, :comment_id, :post_id)
     end 
 end 

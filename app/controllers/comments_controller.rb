@@ -28,24 +28,7 @@ class CommentsController < ApplicationController
             puts "Not Saving"
             
         end
-        # @post = Post.find(params[:post_id])
-        # @comment = @post.comments.build(comment_params)
-        # puts comment_params 
-        # if @comment.save 
-        #     render 'comments/show', layout: false 
-        # else 
-        #     render "posts/show"
-		# # if @comment.update(comment_params)
-		# # 	respond_to do |format|
-		# # 		format.html {redirect_to post_path(@post)}
-		# # 		format.json {render json: @comment}
-		# # 	end
-		# # else
-		# # 	flash.now[:message] = @comment.errors[:content][0]
-		# # 	render :new
-        # # end
-        # # redirect_to posts_path 
-        # end 
+   
 	end
       
 

@@ -2,16 +2,18 @@ class CommentsController < ApplicationController
     before_action :set_post 
 
     def index
+        # binding.pry
         @comments = @post.comments 
-       
-        render 'comments/index', :layout => false 
-         
+        respond_to do |f|
+            f.html {render :index} 
+			f.json {render json: @comments}    
+        # render 'comments/index', :layout => false 
+        end 
 		
     end
     
     def show
         @comment = Comment.find(params[:id])
-        
 		respond_to do |f|
 			f.html {render :show} 
 			f.json {render json: @comment}
@@ -23,11 +25,13 @@ class CommentsController < ApplicationController
         @comment = @post.comments.build(comment_params)
         @comment.user = current_user 
         if @comment.save
-            redirect_to post_comments_path
-        else
-            puts "Not Saving"
-            
-        end
+            redirect_to post_comments_path 
+        end 
+        # respond_to do |f|
+		# 	f.html {render :show} 
+        #     f.json {render json: @comment}
+        # end 
+       
    
 	end
       

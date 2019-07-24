@@ -37,13 +37,15 @@ function getPosts(){
 }
 
 function submitNewComment(){
-    $(document).on("click", "#create_comment", function(e){
+    $(document).on("submit", "#create_comment", function(e){
         e.preventDefault()
         const values = $(this).serialize()
+         //this is the form info in this scenario
         $.post('/posts/1/comments', values)
         .done(function(data) {
-            let newComment = new Post(data)
-            let htmlToAdd = newComment.postShow()  
+            let newComment = new Comment(data)
+            
+            let htmlToAdd = newComment.createComment()  
             document.getElementById('ajax-posts').innerHTML = htmlToAdd 
         })
     })
@@ -54,7 +56,6 @@ function submitNewComment(){
 function getPostShow(){
     $(document).on('click', ".show_link", function(event){
         event.preventDefault()
-        console.log(this)
         let id = $(this).attr('data-id')
     $.ajax({
         url: '/posts/1.json',
@@ -71,20 +72,20 @@ function getPostShow(){
 })
 }
 
-// function Comment(comment, post){
-//     this.id = comment.id 
-//     this.content = comment.content 
-    
-// }
+function Comment(comment){
+    this.id = comment.id 
+    this.content = comment.content 
+      
+}
 
-// Comment.prototype.createComment = function(){
-//     console.log(this)
-//     let postComments = this.comments.map(comment => {
-// 		return (`
-// 			<p>${comment.content}</p>
-// 		`)
-// 	}).join('')
-// }
+Comment.prototype.createComment = function(){
+    console.log(this)
+    
+		return (`
+			<p>${this.content}</p>
+		`)
+	
+}
 
 
 
@@ -97,7 +98,6 @@ function Post(post) {
 
 
 Post.prototype.postShow = function() {
-    console.log(this)
     let postComments = this.comments.map(comment => {
 		return (`
 			<p>${comment.content}</p>

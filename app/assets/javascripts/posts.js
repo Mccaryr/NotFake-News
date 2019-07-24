@@ -1,7 +1,7 @@
 $(function (){
     console.log('posts.js is loaded...')
     listenForClick()
-    
+    submitNewComment()
     
 });
 
@@ -36,6 +36,19 @@ function getPosts(){
 
 }
 
+function submitNewComment(){
+    $(document).on("click", "#create_comment", function(e){
+        e.preventDefault()
+        const values = $(this).serialize()
+        $.post('/posts/1/comments', values)
+        .done(function(data) {
+            let newComment = new Post(data)
+            let htmlToAdd = newComment.postShow()  
+            document.getElementById('ajax-posts').innerHTML = htmlToAdd 
+        })
+    })
+}
+
 
 
 function getPostShow(){
@@ -58,6 +71,21 @@ function getPostShow(){
 })
 }
 
+// function Comment(comment, post){
+//     this.id = comment.id 
+//     this.content = comment.content 
+    
+// }
+
+// Comment.prototype.createComment = function(){
+//     console.log(this)
+//     let postComments = this.comments.map(comment => {
+// 		return (`
+// 			<p>${comment.content}</p>
+// 		`)
+// 	}).join('')
+// }
+
 
 
 function Post(post) {
@@ -69,6 +97,7 @@ function Post(post) {
 
 
 Post.prototype.postShow = function() {
+    console.log(this)
     let postComments = this.comments.map(comment => {
 		return (`
 			<p>${comment.content}</p>

@@ -23,16 +23,15 @@ class CommentsController < ApplicationController
     def create
         @post = Post.find(params[:post_id])
         @comment = @post.comments.build(comment_params)
-        @comment.user = current_user 
-        if @comment.save
-            redirect_to post_comments_path 
+        @comment.user = current_user
+        if @comment.content.empty? 
+            render 'new'
+             
+    elsif @comment.save
+            render json: @comment  
+        else 
+            render 'new'
         end 
-        # respond_to do |f|
-		# 	f.html {render :show} 
-        #     f.json {render json: @comment}
-        # end 
-       
-   
 	end
       
 

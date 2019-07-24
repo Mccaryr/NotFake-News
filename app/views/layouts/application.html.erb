@@ -34,11 +34,14 @@
     </div>
 
     <!-- content -->
-    <div class="container"  role="main">
+    <div class ="container">
+    <div id="ajax-posts">
       <%= yield %>
+      </div>
     </div>
-    <div id='app-container'>
+    <div id="ajax-comments">
+    <%yield%>
     </div>
-    <div id='ajax-posts'>[posts...]</div>
+    
   </body>
 </html>

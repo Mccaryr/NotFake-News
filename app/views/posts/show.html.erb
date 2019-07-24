@@ -6,8 +6,10 @@
 <h3>Comments</h3>
 <div class ="comments">
 
-
-<%= link_to "Load Comments", post_comments_path(@post), class: "load_comments" %>
+<% @post.comments.each do |comment|%>
+<%= comment.content %>
+<% end %>
+<%= link_to "Load Comments", post_comments_path(@post), id: "load_comments" %>
 
 
 

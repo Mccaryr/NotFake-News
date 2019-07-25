@@ -2,12 +2,13 @@ class CommentsController < ApplicationController
     before_action :set_post 
 
     def index
-        # binding.pry
+        binding.pry
+        
         @comments = @post.comments 
         respond_to do |f|
             f.html {render :index} 
 			f.json {render json: @comments}    
-        # render 'comments/index', :layout => false 
+        
         end 
 		
     end
@@ -26,7 +27,7 @@ class CommentsController < ApplicationController
         @comment.user = current_user
         if @comment.content.empty? 
             render 'new'
-             
+
     elsif @comment.save
             render json: @comment  
         else 

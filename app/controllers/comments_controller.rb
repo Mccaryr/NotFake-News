@@ -2,8 +2,6 @@ class CommentsController < ApplicationController
     before_action :set_post 
 
     def index
-        binding.pry
-        
         @comments = @post.comments 
         respond_to do |f|
             f.html {render :index} 

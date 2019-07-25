@@ -36,15 +36,15 @@ function getPosts(){
 
 }
 
+
 function submitNewComment(){
     $(document).on("submit", "#create_comment", function(e){
         e.preventDefault()
           
         
         const values = $(this).serialize()
-        
-         //this is the form info in this scenario
-        $.post('/posts/1/comments', values)
+        let id = $(this).attr('action')[7]
+        $.post('/posts/'+id+'/comments', values)
         .done(function(data) {
             let newComment = new Comment(data)
             

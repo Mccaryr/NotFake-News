@@ -27,7 +27,7 @@ function getPosts(){
 			data.map(post => {
 				const newPost = new Post(post)
                 const newPostHtml = newPost.postHTML()
-                document.getElementById('ajax-posts').innerHTML = newPostHtml
+                document.getElementById('ajax-posts').innerHTML += newPostHtml
             })
             
         } 
@@ -43,7 +43,7 @@ function submitNewComment(){
           
         
         const values = $(this).serialize()
-        let id = $(this).attr('action')[7]
+        let id = $(this).attr('action')[7];
         $.post('/posts/'+id+'/comments', values)
         .done(function(data) {
             let newComment = new Comment(data)

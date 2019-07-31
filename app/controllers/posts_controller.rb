@@ -16,14 +16,6 @@ class PostsController < ApplicationController
 
     def create 
         @post = Post.create(post_params)
-        # if @post.save 
-        #     respond_to do |f| 
-        #         f.html {redirect_to posts_path}
-        #         f.json {render json: @post}
-        #     end 
-        # else 
-        #     redirect_to posts_path 
-        # end 
     end 
 
     def show

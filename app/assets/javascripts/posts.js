@@ -2,10 +2,16 @@ $(function (){
     console.log('posts.js is loaded...')
     listenForClick()
     submitNewComment()
+    eventListener()
     
 });
 
-
+function eventListener(){
+    $('#alphabet_posts').on('click', function(e) {
+        e.preventDefault()
+        getAlphabetizedPosts()
+    })
+}
 
 
 function listenForClick(){
@@ -34,6 +40,33 @@ function getPosts(){
         
     }) 
 
+}
+
+function getAlphabetizedPosts(){
+    $.ajax({
+        url: '/posts.json',
+        method: 'get',
+        dataType: 'json',
+        success: function (posts) {
+            
+            posts.sort(function(a, b){
+                var x = a.title.toLowerCase();
+                var y = b.title.toLowerCase();
+                if (x < y) {return -1;}
+                if (x > y) {return 1;}
+                return 0;
+            //     const newPost = 
+            //   const alphabetizedPostsHTML = newPost.postHTML()
+            //     document.getElementById('ajax-posts').innerHTML += alphabetizedPostsHTML
+              }); 
+              posts.map(post => {
+                const newPost = new Post(post)
+                const alphabetizedPost = newPost.postHTML()
+                document.getElementById('ajax-posts').innerHTML += alphabetizedPost 
+              })
+        
+    }
+    })
 }
 
 
@@ -123,6 +156,10 @@ return (`
         <a href='/posts/${this.id}' data-id="${this.id}" class="show_link"><h1>${this.title}</h1></a>
 `)
 }
+
+
+
+
 
 
 

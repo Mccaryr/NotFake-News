@@ -55,9 +55,7 @@ function getAlphabetizedPosts(){
                 if (x < y) {return -1;}
                 if (x > y) {return 1;}
                 return 0;
-            //     const newPost = 
-            //   const alphabetizedPostsHTML = newPost.postHTML()
-            //     document.getElementById('ajax-posts').innerHTML += alphabetizedPostsHTML
+            
               }); 
               posts.map(post => {
                 const newPost = new Post(post)
